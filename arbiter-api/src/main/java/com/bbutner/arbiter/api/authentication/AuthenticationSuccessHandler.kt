@@ -21,7 +21,7 @@ class AuthenticationSuccessHandler(
 ): ServerAuthenticationSuccessHandler {
     private val redirectStrategy: ServerRedirectStrategy = DefaultServerRedirectStrategy()
 
-    private val DEFAULT_LOGIN_SUCCESS_URL: String = "http://localhost:8080/users/22"
+    private val DEFAULT_LOGIN_SUCCESS_URL: String = "http://localhost:3000/"
 
     override fun onAuthenticationSuccess(filter: WebFilterExchange, auth: Authentication): Mono<Void> = mono {
         val url: URI = URI.create(DEFAULT_LOGIN_SUCCESS_URL)

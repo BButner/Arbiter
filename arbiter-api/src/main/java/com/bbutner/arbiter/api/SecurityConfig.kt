@@ -24,7 +24,7 @@ class SecurityConfig(
             httpSecurity: ServerHttpSecurity
     ): SecurityWebFilterChain = httpSecurity
             .authorizeExchange()
-            .pathMatchers("/login").permitAll()
+            .pathMatchers("/login", "/register").permitAll()
             .anyExchange().authenticated()
             .and()
             .exceptionHandling(::withConfiguration)

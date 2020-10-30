@@ -1,0 +1,4 @@
+package com.bbutner.arbiter.api.util.lang
+
+val SESSION_HARMONY_USER_ID: String = "HARMONY_USER_ID"
+val SESSION_HARMONY_REGISTER_USERNAME: String = "HARMONY_REGISTER_USERNAME"

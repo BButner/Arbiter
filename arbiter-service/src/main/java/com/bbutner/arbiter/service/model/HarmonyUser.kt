@@ -7,7 +7,8 @@ import java.time.LocalDateTime
 @Table("user")
 data class HarmonyUser(
         @Id
-        val id: String,
+        val id: Int?,
+        val idExternal: String,
         val avatarUrl: String,
         val username: String,
         val displayName: String?,
@@ -15,7 +16,7 @@ data class HarmonyUser(
         val registrationDate: LocalDateTime
 ) {
     override fun toString(): String {
-        return String.format("[id=%s, avatarUrl=%s, username=%s, displayName=%s, email=%s, registrationDate=%s]",
-            id, avatarUrl, username, displayName, email, registrationDate)
+        return String.format("[id=%s, idExternal=%s, avatarUrl=%s, username=%s, displayName=%s, email=%s, registrationDate=%s]",
+            id, idExternal, avatarUrl, username, displayName, email, registrationDate)
     }
 }

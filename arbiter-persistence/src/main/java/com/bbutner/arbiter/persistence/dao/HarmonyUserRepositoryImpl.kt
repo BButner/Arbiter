@@ -13,4 +13,7 @@ interface HarmonyUserRepositoryImpl: HarmonyUserRepository, CoroutineCrudReposit
 
     @Query("select * from user where email = ?")
     override suspend fun getByEmail(email: String): HarmonyUser?
+
+    @Query("select * from user where username = ?")
+    override suspend fun getByUsername(username: String): HarmonyUser?
 }

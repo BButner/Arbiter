@@ -1,5 +1,6 @@
 package com.bbutner.arbiter.api.controllers
 
+import com.bbutner.arbiter.api.util.lang.SESSION_HARMONY_USER_ID
 import com.bbutner.arbiter.service.model.HarmonyUser
 import com.bbutner.arbiter.service.model.HarmonyUserSettings
 import com.bbutner.arbiter.service.service.HarmonyUserService
@@ -27,7 +28,7 @@ class HarmonyUserController (
     @GetMapping("/{id}")
     suspend fun getUserById(@AuthenticationPrincipal user: OAuth2User, @PathVariable id: String, exchange: ServerWebExchange): HarmonyUser {
         try {
-            return if (exchange.session.awaitSingle().attributes["HARMONY_USER_ID"].toString() == id) {
+            return if (exchange.session.awaitSingle().attributes[SESSION_HARMONY_USER_ID].toString() == id) {
                 harmonyUserService.getUserById(id)
             } else {
                 val user: HarmonyUser = harmonyUserService.getUserById(id)
@@ -35,6 +36,7 @@ class HarmonyUserController (
 
                 HarmonyUser(
                         user.id,
+                        user.idExternal,
                         user.avatarUrl,
                         user.username,
                         if (settings.displayNamePublic) user.displayName else null,
@@ -50,7 +52,7 @@ class HarmonyUserController (
     @GetMapping("/me")
     suspend fun getUserImplicit(@AuthenticationPrincipal user: OAuth2User, exchange: ServerWebExchange): HarmonyUser {
         try {
-            return harmonyUserService.getUserById(exchange.session.awaitSingle().attributes["HARMONY_USER_ID"].toString())
+            return harmonyUserService.getUserById(exchange.session.awaitSingle().attributes[SESSION_HARMONY_USER_ID].toString())
         } catch (e: Exception) {
             throw e
         }

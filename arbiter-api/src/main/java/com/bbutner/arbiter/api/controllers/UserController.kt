@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ServerWebExchange
 import java.lang.Exception
 
-@CrossOrigin(origins = ["*"],
-        allowedHeaders = ["*"],
-        methods = [ RequestMethod.DELETE, RequestMethod.GET, RequestMethod.HEAD, RequestMethod.OPTIONS, RequestMethod.PATCH, RequestMethod.PUT ],
-        allowCredentials = "true"
-)
+//@CrossOrigin(origins = ["*"],
+//        allowedHeaders = ["*"],
+//        methods = [ RequestMethod.DELETE, RequestMethod.GET, RequestMethod.HEAD, RequestMethod.OPTIONS, RequestMethod.PATCH, RequestMethod.PUT ],
+//        allowCredentials = "true"
+//)
 @RestController
 @RequestMapping("/users")
 @PreAuthorize("hasRole('USER')")

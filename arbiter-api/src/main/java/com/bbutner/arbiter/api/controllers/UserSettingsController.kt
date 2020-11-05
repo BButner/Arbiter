@@ -14,6 +14,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.reactive.server.awaitSession
 import org.springframework.web.server.ServerWebExchange
+import java.util.*
 
 @CrossOrigin(origins = ["*"],
         allowedHeaders = ["*"],
@@ -26,12 +27,13 @@ class HarmonyUserSettingsController (
         private val harmonyUserSettingsRepository: HarmonyUserSettingsRepository,
         private val harmonyUserSettingCategoryRepository: HarmonyUserSettingCategoryRepository
 ) {
-    @GetMapping("/users/{id}/settings")
-    suspend fun getUserSettingsById(@AuthenticationPrincipal user: OAuth2User, @PathVariable id: String, exchange: ServerWebExchange): HarmonyUserSettings {
+    @GetMapping("/users/{idExternal}/settings")
+    suspend fun getUserSettingsById(@AuthenticationPrincipal user: OAuth2User, @PathVariable idExternal: String, exchange: ServerWebExchange): HarmonyUserSettings {
         try {
-            val userId: String = AuthGenericHelper().getUserIdFromSession(exchange.awaitSession())!! // TODO check that the session user id actually exists, don't just !!
-            return if (userId == id) {
-                harmonyUserSettingsRepository.getByUserId(userId)
+            val idExternalFromSession: String? = AuthGenericHelper().getUserIdExternalFromSession(exchange.awaitSession())
+
+            return if (idExternalFromSession != null && idExternalFromSession == idExternal) {
+                harmonyUserSettingsRepository.getByUserId(AuthGenericHelper().getUserIdFromSession(exchange.awaitSession())!!)
             } else {
                 throw AuthenticationCredentialsNotFoundException("Not Authenticated")
             }
@@ -43,7 +45,13 @@ class HarmonyUserSettingsController (
     @GetMapping("/users/me/settings")
     suspend fun getUserSettingsImplicit(@AuthenticationPrincipal user: OAuth2User, exchange: ServerWebExchange): HarmonyUserSettings {
         try {
-            return harmonyUserSettingsRepository.getByUserId(AuthGenericHelper().getUserIdFromSession(exchange.awaitSession())!!) // TODO check that the session user id actually exists, don't just !!
+            val idExternalFromSession: String? = AuthGenericHelper().getUserIdExternalFromSession(exchange.awaitSession())
+
+            return if (idExternalFromSession != null) {
+                harmonyUserSettingsRepository.getByUserId(AuthGenericHelper().getUserIdFromSession(exchange.awaitSession())!!)
+            } else {
+                throw AuthenticationCredentialsNotFoundException("Not Authenticated")
+            }
         } catch (e: Exception) {
             throw e
         }

@@ -4,5 +4,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface HarmonyUserSettingsRepository {
-    suspend fun getByUserId(userId: String): HarmonyUserSettings
+    suspend fun getByUserId(userId: Int): HarmonyUserSettings
 }

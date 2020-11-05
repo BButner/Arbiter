@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class HarmonyUserSettingsServiceImpl(
         private val harmonyUserSettingsRepository: HarmonyUserSettingsRepository
 ): HarmonyUserSettingsService {
-    override suspend fun getUserSettingsByUserId(userId: String): HarmonyUserSettings {
+    override suspend fun getUserSettingsByUserId(userId: Int): HarmonyUserSettings {
         return harmonyUserSettingsRepository.getByUserId(userId)
     }
 }

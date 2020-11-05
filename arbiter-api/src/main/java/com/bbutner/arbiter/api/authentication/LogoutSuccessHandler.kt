@@ -14,7 +14,7 @@ import java.net.URI
 @Component
 class LogoutSuccessHandler(): ServerLogoutSuccessHandler {
     private val redirectStrategy: ServerRedirectStrategy = DefaultServerRedirectStrategy()
-    private val DEFAULT_LOGOUT_SUCCESS_URL: String = "http://localhost:3000/"
+    private val DEFAULT_LOGOUT_SUCCESS_URL: String = "http://10.0.0.97:3000/"
 
     override fun onLogoutSuccess(filter: WebFilterExchange, auth: Authentication): Mono<Void> = mono {
         redirectStrategy.sendRedirect(filter.exchange, URI.create(DEFAULT_LOGOUT_SUCCESS_URL)).awaitFirstOrNull()

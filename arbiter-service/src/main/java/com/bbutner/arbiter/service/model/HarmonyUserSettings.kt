@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id
 class HarmonyUserSettings (
         @Id
         val id: String,
-        val userId: String,
+        val userId: Int,
         val emailPublic: Boolean,
         val displayNamePublic: Boolean,
         val darkMode: Boolean

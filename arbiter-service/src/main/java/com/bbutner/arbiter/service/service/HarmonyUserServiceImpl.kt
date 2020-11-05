@@ -4,6 +4,7 @@ import com.bbutner.arbiter.service.exception.NotFoundException
 import com.bbutner.arbiter.service.model.HarmonyUser
 import com.bbutner.arbiter.service.model.HarmonyUserRepository
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class HarmonyUserServiceImpl(
@@ -11,6 +12,13 @@ class HarmonyUserServiceImpl(
 ): HarmonyUserService {
     override suspend fun getUserById(id: String): HarmonyUser {
         return when (val user = harmonyUserRepository.getById(id)) {
+            null -> throw NotFoundException()
+            else -> user
+        }
+    }
+
+    override suspend fun getUserByIdExternal(externalId: String): HarmonyUser {
+        return when (val user = harmonyUserRepository.getByIdExternal(externalId)) {
             null -> throw NotFoundException()
             else -> user
         }

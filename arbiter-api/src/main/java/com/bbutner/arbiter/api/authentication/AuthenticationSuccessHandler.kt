@@ -22,12 +22,11 @@ class AuthenticationSuccessHandler(
 ): ServerAuthenticationSuccessHandler {
     private val redirectStrategy: ServerRedirectStrategy = DefaultServerRedirectStrategy()
 
-    private val DEFAULT_LOGIN_SUCCESS_URL: String = "http://localhost:3000/"
+    private val DEFAULT_LOGIN_SUCCESS_URL: String = "http://10.0.0.97:3000/"
 
     override fun onAuthenticationSuccess(filter: WebFilterExchange, auth: Authentication): Mono<Void> = mono {
         val url: URI = URI.create(DEFAULT_LOGIN_SUCCESS_URL)
         val oAuth2User = auth.principal as DefaultOAuth2User
-        println("success auth")
 
         if (LoginHelper().authContainsEmailField(oAuth2User)) {
             val email = oAuth2User.attributes["email"] as String
@@ -35,7 +34,6 @@ class AuthenticationSuccessHandler(
             if (LoginHelper().userRegisteredWithEmail(harmonyUserRepository, email)) {
                 LoginHelper().handleLogin(harmonyUserRepository, filter, email)
             } else {
-                println("attempted registration")
                 RegistrationHelper().handleRegistration(
                         harmonyUserRepository,
                         filter.exchange.awaitSession(),

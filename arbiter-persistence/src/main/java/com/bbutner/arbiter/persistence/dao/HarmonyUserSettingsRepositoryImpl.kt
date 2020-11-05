@@ -1,5 +1,6 @@
 package com.bbutner.arbiter.persistence.dao
 
+import com.bbutner.arbiter.service.model.HarmonyUserSettingCategory
 import com.bbutner.arbiter.service.model.HarmonyUserSettings
 import com.bbutner.arbiter.service.model.HarmonyUserSettingsRepository
 import org.springframework.data.r2dbc.repository.Query

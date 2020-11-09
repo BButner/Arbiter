@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id
 
 class HarmonyUserSettings (
         @Id
-        val id: String,
+        val id: Int,
         val userId: Int,
         val emailPublic: Boolean,
         val displayNamePublic: Boolean,

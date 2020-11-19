@@ -1,5 +1,6 @@
 package com.bbutner.arbiter.api.controllers
 
+import com.bbutner.arbiter.api.exception.BadRequestException
 import com.bbutner.arbiter.api.util.auth.AuthGenericHelper
 import com.bbutner.arbiter.api.util.lang.SESSION_HARMONY_USER_ID
 import com.bbutner.arbiter.service.model.HarmonyUserSettingCategory
@@ -63,6 +64,19 @@ class HarmonyUserSettingsController (
             return harmonyUserSettingCategoryRepository.findAll()
         } catch (e: Exception) {
             throw e
+        }
+    }
+
+    @PutMapping("/users/{idExternal}/settings")
+    suspend fun updateUserSettingsByIdExternal(@AuthenticationPrincipal user: OAuth2User, @PathVariable idExternal: String, @RequestBody settings: HarmonyUserSettings, exchange: ServerWebExchange) {
+        val settingsCurrent: HarmonyUserSettings = harmonyUserSettingsRepository.getByUserId(AuthGenericHelper().getUserIdFromSession(exchange.awaitSession())!!)
+
+        if (settingsCurrent.id == settings.id && settingsCurrent.userId == settings.userId) {
+            println(settings)
+            harmonyUserSettingsRepository.save(settings)
+            return
+        } else {
+            throw BadRequestException()
         }
     }
 }

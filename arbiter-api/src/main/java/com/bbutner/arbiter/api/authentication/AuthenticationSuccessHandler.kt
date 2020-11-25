@@ -2,7 +2,7 @@ package com.bbutner.arbiter.api.authentication
 
 import com.bbutner.arbiter.api.util.auth.LoginHelper
 import com.bbutner.arbiter.api.util.auth.RegistrationHelper
-import com.bbutner.arbiter.service.model.HarmonyUserRepository
+import com.bbutner.arbiter.service.model.user.HarmonyUserRepository
 import kotlinx.coroutines.reactive.awaitFirstOrNull
 import kotlinx.coroutines.reactor.mono
 import org.springframework.security.core.Authentication

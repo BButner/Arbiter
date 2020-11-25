@@ -2,10 +2,10 @@ package com.bbutner.arbiter.api.controllers
 
 import com.bbutner.arbiter.api.exception.BadRequestException
 import com.bbutner.arbiter.api.util.auth.SessionHelper
-import com.bbutner.arbiter.service.model.HarmonyUserSettingCategory
-import com.bbutner.arbiter.service.model.HarmonyUserSettingCategoryRepository
-import com.bbutner.arbiter.service.model.HarmonyUserSettings
-import com.bbutner.arbiter.service.model.HarmonyUserSettingsRepository
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettingCategory
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettingCategoryRepository
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettings
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettingsRepository
 import kotlinx.coroutines.flow.Flow
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException

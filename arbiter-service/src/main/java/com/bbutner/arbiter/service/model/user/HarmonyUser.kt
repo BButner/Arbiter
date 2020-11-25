@@ -1,9 +1,8 @@
-package com.bbutner.arbiter.service.model
+package com.bbutner.arbiter.service.model.user
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime
-import java.util.*
 
 @Table("user")
 data class HarmonyUser(

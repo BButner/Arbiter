@@ -1,7 +1,7 @@
 package com.bbutner.arbiter.service.service.user
 
-import com.bbutner.arbiter.service.model.HarmonyUserSettings
-import com.bbutner.arbiter.service.model.HarmonyUserSettingsRepository
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettings
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettingsRepository
 import org.springframework.stereotype.Service
 
 @Service

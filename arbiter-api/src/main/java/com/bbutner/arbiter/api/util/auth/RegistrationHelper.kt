@@ -2,8 +2,8 @@ package com.bbutner.arbiter.api.util.auth
 
 import com.bbutner.arbiter.api.util.lang.DEFAULT_REGISTRATION_IMAGE_NAME
 import com.bbutner.arbiter.api.util.lang.SESSION_HARMONY_REGISTER_USERNAME
-import com.bbutner.arbiter.service.model.HarmonyUser
-import com.bbutner.arbiter.service.model.HarmonyUserRepository
+import com.bbutner.arbiter.service.model.user.HarmonyUser
+import com.bbutner.arbiter.service.model.user.HarmonyUserRepository
 import org.springframework.web.server.WebSession
 import java.time.LocalDateTime
 import java.util.*

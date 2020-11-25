@@ -1,7 +1,6 @@
 package com.bbutner.arbiter.service.service.user
 
-import com.bbutner.arbiter.service.model.HarmonyUser
-import java.util.*
+import com.bbutner.arbiter.service.model.user.HarmonyUser
 
 interface HarmonyUserService {
     suspend fun getUserById(id: String): HarmonyUser

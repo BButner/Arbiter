@@ -1,8 +1,7 @@
-package com.bbutner.arbiter.service.model
+package com.bbutner.arbiter.service.model.user
 
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository
-import java.util.*
 
 @Repository
 interface HarmonyUserRepository: CoroutineCrudRepository<HarmonyUser, String> {

@@ -1,7 +1,7 @@
 package com.bbutner.arbiter.api.util.auth
 
-import com.bbutner.arbiter.service.model.HarmonyUser
-import com.bbutner.arbiter.service.model.HarmonyUserRepository
+import com.bbutner.arbiter.service.model.user.HarmonyUser
+import com.bbutner.arbiter.service.model.user.HarmonyUserRepository
 import kotlinx.coroutines.reactive.awaitSingle
 import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.security.web.server.WebFilterExchange

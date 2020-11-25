@@ -1,8 +1,8 @@
 package com.bbutner.arbiter.service.service.user
 
 import com.bbutner.arbiter.service.exception.NotFoundException
-import com.bbutner.arbiter.service.model.HarmonyUser
-import com.bbutner.arbiter.service.model.HarmonyUserRepository
+import com.bbutner.arbiter.service.model.user.HarmonyUser
+import com.bbutner.arbiter.service.model.user.HarmonyUserRepository
 import org.springframework.stereotype.Service
 
 @Service

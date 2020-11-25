@@ -2,8 +2,8 @@ package com.bbutner.arbiter.api.controllers
 
 import com.bbutner.arbiter.api.util.auth.SessionHelper
 import com.bbutner.arbiter.api.util.lang.SESSION_HARMONY_USER_ID
-import com.bbutner.arbiter.service.model.HarmonyUser
-import com.bbutner.arbiter.service.model.HarmonyUserSettings
+import com.bbutner.arbiter.service.model.user.HarmonyUser
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettings
 import com.bbutner.arbiter.service.service.user.HarmonyUserService
 import com.bbutner.arbiter.service.service.user.HarmonyUserSettingsService
 import kotlinx.coroutines.reactive.awaitSingle

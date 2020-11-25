@@ -1,7 +1,7 @@
 package com.bbutner.arbiter.persistence.dao
 
-import com.bbutner.arbiter.service.model.HarmonyUserSettings
-import com.bbutner.arbiter.service.model.HarmonyUserSettingsRepository
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettings
+import com.bbutner.arbiter.service.model.user.HarmonyUserSettingsRepository
 import org.springframework.data.r2dbc.repository.Query
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository

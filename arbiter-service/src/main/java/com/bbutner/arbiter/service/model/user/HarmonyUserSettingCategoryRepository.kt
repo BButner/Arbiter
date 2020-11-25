@@ -1,4 +1,4 @@
-package com.bbutner.arbiter.service.model
+package com.bbutner.arbiter.service.model.user
 
 import kotlinx.coroutines.flow.Flow
 import org.springframework.stereotype.Repository

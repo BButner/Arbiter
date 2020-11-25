@@ -21,7 +21,6 @@ import java.nio.charset.StandardCharsets
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 class GlobalErrorHandler(
-
         private val objectMapper: ObjectMapper
 ) : WebExceptionHandler {
 

@@ -59,15 +59,6 @@ class SecurityConfig(
             spec.accessDeniedHandler(exceptionHandler::handle)
                     .authenticationEntryPoint(exceptionHandler::handle)
                     .run {}
-//    @Bean
-//    fun corsConfigurationSource(): CorsConfigurationSource? {
-//        val configuration = CorsConfiguration()
-//        configuration.allowedOrigins = Arrays.asList("http://localhost:3000", "http://10.0.0.97:3000")
-//        configuration.allowedMethods = Arrays.asList("GET", "POST")
-//        val source = UrlBasedCorsConfigurationSource()
-//        source.registerCorsConfiguration("/**", configuration)
-//        return source
-//    }
 
     fun withConfiguration(spec: ServerHttpSecurity.OAuth2LoginSpec): Unit =
             spec.authenticationFailureHandler(authenticationFailureHandler)

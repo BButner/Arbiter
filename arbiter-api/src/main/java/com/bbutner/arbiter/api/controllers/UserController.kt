@@ -1,11 +1,11 @@
 package com.bbutner.arbiter.api.controllers
 
-import com.bbutner.arbiter.api.util.auth.AuthGenericHelper
+import com.bbutner.arbiter.api.util.auth.SessionHelper
 import com.bbutner.arbiter.api.util.lang.SESSION_HARMONY_USER_ID
 import com.bbutner.arbiter.service.model.HarmonyUser
 import com.bbutner.arbiter.service.model.HarmonyUserSettings
-import com.bbutner.arbiter.service.service.HarmonyUserService
-import com.bbutner.arbiter.service.service.HarmonyUserSettingsService
+import com.bbutner.arbiter.service.service.user.HarmonyUserService
+import com.bbutner.arbiter.service.service.user.HarmonyUserSettingsService
 import kotlinx.coroutines.reactive.awaitSingle
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.annotation.AuthenticationPrincipal
@@ -26,7 +26,7 @@ class HarmonyUserController (
     suspend fun getUserById(@AuthenticationPrincipal user: OAuth2User, @PathVariable idExternal: String, exchange: ServerWebExchange): HarmonyUser {
         try {
             val user: HarmonyUser = harmonyUserService.getUserByIdExternal(idExternal)
-            val userId: Int? = AuthGenericHelper().getUserIdFromSession(exchange.awaitSession())
+            val userId: Int? = SessionHelper().getUserIdFromSession(exchange.awaitSession())
 
             return if (userId != null && userId == user.id) {
                 user

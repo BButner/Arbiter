@@ -12,8 +12,8 @@ class LoginHelper {
         val user: HarmonyUser? = harmonyUserRepository.getByEmail(email)
 
         if (user != null) {
-            AuthGenericHelper().storeUserIdInSession(filter.exchange.session.awaitSingle(), user.id!!)
-            AuthGenericHelper().storeUserIdExternalInSession(filter.exchange.awaitSession(), user.idExternal)
+            SessionHelper().storeUserIdInSession(filter.exchange.session.awaitSingle(), user.id!!)
+            SessionHelper().storeUserIdExternalInSession(filter.exchange.awaitSession(), user.idExternal)
         }
     }
 

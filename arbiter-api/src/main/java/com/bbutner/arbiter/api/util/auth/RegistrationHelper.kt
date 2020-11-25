@@ -21,7 +21,7 @@ class RegistrationHelper {
         if (userValidForRegistration(harmonyUserRepository, email, username)) {
             val newUser: HarmonyUser = registerUser(harmonyUserRepository, email, displayName, username)
 
-            AuthGenericHelper().storeUserIdInSession(session, newUser.id!!)
+            SessionHelper().storeUserIdInSession(session, newUser.id!!)
         } else {
             // we redirect with an error?
         }

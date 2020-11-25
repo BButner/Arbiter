@@ -1,4 +1,4 @@
-package com.bbutner.arbiter.service.service
+package com.bbutner.arbiter.service.service.user
 
 import com.bbutner.arbiter.service.model.HarmonyUserSettings
 import com.bbutner.arbiter.service.model.HarmonyUserSettingsRepository

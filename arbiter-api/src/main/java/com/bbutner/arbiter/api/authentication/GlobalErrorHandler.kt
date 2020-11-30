@@ -1,5 +1,6 @@
 package com.bbutner.arbiter.api.authentication
 
+import com.bbutner.arbiter.api.exception.spotify.SpotifyNotAuthenticatedException
 import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.reactor.mono
@@ -32,6 +33,8 @@ class GlobalErrorHandler(
                 HttpStatus.UNAUTHORIZED to (401)
             is AccessDeniedException ->
                 HttpStatus.FORBIDDEN to (200)
+            is SpotifyNotAuthenticatedException ->
+                HttpStatus.UNAUTHORIZED to (401)
 
             else -> HttpStatus.INTERNAL_SERVER_ERROR to (0)
         }

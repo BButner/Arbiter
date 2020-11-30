@@ -1,5 +1,6 @@
 package com.bbutner.arbiter.api.controllers.service
 
+import com.bbutner.arbiter.api.exception.spotify.SpotifyNotAuthenticatedException
 import com.bbutner.arbiter.api.util.auth.SessionHelper
 import com.bbutner.arbiter.service.model.services.spotify.SpotifyAccessTokenResponse
 import com.bbutner.arbiter.service.model.services.spotify.SpotifyPlaylist
@@ -7,6 +8,7 @@ import com.bbutner.arbiter.service.model.services.spotify.SpotifyUser
 import com.bbutner.arbiter.service.service.services.spotify.SpotifyWebAuthService
 import com.bbutner.arbiter.service.service.services.spotify.SpotifyWebService
 import org.springframework.security.access.prepost.PreAuthorize
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.web.bind.annotation.*
@@ -40,8 +42,14 @@ class ServiceSpotifyController(
 
     @GetMapping("/playlists")
     suspend fun handlePlaylistRetrieval(@AuthenticationPrincipal user: OAuth2User, exchange: ServerWebExchange): Array<SpotifyPlaylist> {
-        val playlistResponse: Array<SpotifyPlaylist> = spotifyWebService.getUserPlaylists(SessionHelper().getSpotifyAccessTokenFromSession(exchange.awaitSession())!!)
+        val spotifyAccessToken: String? = SessionHelper().getSpotifyAccessTokenFromSession(exchange.awaitSession())
 
-        return playlistResponse
+        if (spotifyAccessToken != null) {
+            val playlistResponse: Array<SpotifyPlaylist> = spotifyWebService.getUserPlaylists(spotifyAccessToken)
+
+            return playlistResponse
+        } else {
+            throw SpotifyNotAuthenticatedException()
+        }
     }
 }

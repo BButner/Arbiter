@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 class SpotifyArtist(
         val href: String,
         val id: String,
-        val images: Array<SpotifyImage>,
         val name: String,
         val type: String,
         val uri: String
@@ -39,7 +38,7 @@ class SpotifyAlbum(
 
 class SpotifySongPagination (
         val href: String,
-        val items: Array<SpotifySong>,
+        val items: Array<SpotifySongWrapper>,
         val limit: Int,
         val next: String?,
         val offset: Int,
@@ -52,10 +51,21 @@ class SpotifySongPagination (
     }
 }
 
+class SpotifySongWrapper(
+        @JsonProperty("added_at")
+        val addedAt: String,
+        val track: SpotifySong
+) {
+    override fun toString(): String {
+        return "[addedAt=$addedAt, track=$track]"
+    }
+}
+
 class SpotifySong(
         val album: SpotifyAlbum,
         val artists: Array<SpotifyArtist>,
-        val duration_ms: Int,
+        @JsonProperty("duration_ms")
+        val durationMs: Int,
         val explicit: Boolean,
         val href: String,
         val id: String,
@@ -63,4 +73,8 @@ class SpotifySong(
         val popularity: Int,
         val type: String,
         val uri: String
-) {}
+) {
+    override fun toString(): String {
+        return "[album=$album, artists=$artists, durationMs=$durationMs, explicit=$explicit, href=$href, id=$id, name=$name, popularity=$popularity, type=$type, uri=$uri]"
+    }
+}

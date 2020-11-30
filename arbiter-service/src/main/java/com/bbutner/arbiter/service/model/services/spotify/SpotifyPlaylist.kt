@@ -13,9 +13,10 @@ class SpotifyPlaylist(
         val public: Boolean?,
         @JsonProperty("snapshot_id")
         val snapshotId: String,
-        val tracks: SpotifySong,
+        val tracks: SpotifyTrack,
         val type: String,
-        val uri: String
+        val uri: String,
+        var songs: Array<SpotifySong>?
 ) {
     override fun toString(): String {
         return String.format("[collaborative=%s, description=%s, href=%s, id=%s, images=%s, name=%s, owner=%s, public=%s, snapshotId=%s, tracks=%s, type=%s, uri=%s]",

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 class SpotifyArtist(
         val href: String,
         val id: String,
+        val images: Array<SpotifyImage>,
         val name: String,
         val type: String,
         val uri: String

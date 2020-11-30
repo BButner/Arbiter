@@ -13,7 +13,7 @@ class SpotifyPlaylist(
         val public: Boolean?,
         @JsonProperty("snapshot_id")
         val snapshotId: String,
-        val tracks: SpotifyTrack,
+        val tracks: SpotifySong,
         val type: String,
         val uri: String
 ) {
@@ -31,4 +31,9 @@ class SpotifyPlaylistPagination (
         val offset: Int,
         val previous: String?,
         val total: Int
-)
+) {
+    override fun toString(): String {
+        return String.format("[href=%s, items=%s, limit=%s, next=%s, offset=%s, previous=%s, total=%s]",
+            href, items, limit, next, offset, previous, total)
+    }
+}

@@ -6,13 +6,11 @@ class UnifiedArtist(
         // The link to the Artist
         val uri: String,
         // The ID of the Artist
-        val id: String,
-        // Href to the Image of the Artist
-        val imageHref: String
+        val id: String
 ) {
     override fun toString(): String {
-        return String.format("[name=%s, uri=%s, id=%s, imageHref=%s]",
-            name, uri, id, imageHref)
+        return String.format("[name=%s, uri=%s, id=%s]",
+            name, uri, id)
     }
 }
 
@@ -46,12 +44,10 @@ class UnifiedSong(
         // The ID of the Song
         val id: String,
         // The Name of the Song
-        val name: String,
-        // Href to the Image of the Song
-        val imageHref: String
+        val name: String
 ) {
     override fun toString(): String {
-        return String.format("[album=%s, artists=%s, explicit=%s, uri=%s, id=%s, name=%s, imageHref=%s]",
-            album, artists, explicit, uri, id, name, imageHref)
+        return String.format("[album=%s, artists=%s, explicit=%s, uri=%s, id=%s, name=%s]",
+            album, artists, explicit, uri, id, name)
     }
 }

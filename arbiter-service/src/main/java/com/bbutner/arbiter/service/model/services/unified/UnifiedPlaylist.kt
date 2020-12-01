@@ -8,13 +8,9 @@ class UnifiedPlaylist(
         // The URI of the Playlist
         val uri: String,
         // The ID of the Playlist
-        val id: String,
-        // The Count of Songs on the Playlist
-        val songCount: Int,
-        // The Songs in the Playlist
-        val songs: Array<UnifiedSong>
+        val id: String
 ) {
     override fun toString(): String {
-        return "[name=$name, uri=$uri, id=$id, songCount=$songCount, songs=$songs]"
+        return "[name=$name, description=$description, uri=$uri, id=$id]"
     }
 }

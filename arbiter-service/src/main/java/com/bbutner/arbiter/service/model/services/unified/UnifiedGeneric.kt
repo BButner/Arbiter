@@ -9,8 +9,7 @@ class UnifiedArtist(
         val id: String
 ) {
     override fun toString(): String {
-        return String.format("[name=%s, uri=%s, id=%s]",
-            name, uri, id)
+        return "[name=$name, uri=$uri, id=$id]"
     }
 }
 
@@ -27,8 +26,7 @@ class UnifiedAlbum(
         val imageHref: String
 ) {
     override fun toString(): String {
-        return String.format("[artists=%s, uri=%s, id=%s, name=%s, imageHref=%s]",
-            artists, uri, id, name, imageHref)
+        return "[artists=$artists, uri=$uri, id=$id, name=$name, imageHref=$imageHref]"
     }
 }
 
@@ -47,7 +45,6 @@ class UnifiedSong(
         val name: String
 ) {
     override fun toString(): String {
-        return String.format("[album=%s, artists=%s, explicit=%s, uri=%s, id=%s, name=%s]",
-            album, artists, explicit, uri, id, name)
+        return "[album=$album, artists=$artists, explicit=$explicit, uri=$uri, id=$id, name=$name]"
     }
 }

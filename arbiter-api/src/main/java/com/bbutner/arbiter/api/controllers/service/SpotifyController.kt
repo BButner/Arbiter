@@ -59,10 +59,9 @@ class ServiceSpotifyController(
         val spotifyAccessTokenResponse: String? = SessionHelper().getSpotifyAccessTokenFromSession(exchange.awaitSession())
 
         if (spotifyAccessTokenResponse != null) {
-//            val songsResponse: Array<UnifiedSong> = spotifyWebService.getSongsForPlaylist(spotifyAccessTokenResponse, playlistId)
-            val test = spotifyWebService.getSongsByPlaylistId(spotifyAccessTokenResponse, playlistId)
+            val translatedSongs: Array<UnifiedSong> = spotifyWebService.getSongsByPlaylistId(spotifyAccessTokenResponse, playlistId)
 
-            return test
+            return translatedSongs
         } else {
             throw SpotifyNotAuthenticatedException()
         }

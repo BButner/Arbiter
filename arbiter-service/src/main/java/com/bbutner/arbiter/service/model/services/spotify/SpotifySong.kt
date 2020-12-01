@@ -31,8 +31,7 @@ class SpotifyAlbum(
         val uri: String
 ) {
     override fun toString(): String {
-        return String.format("[albumGroup=%s, albumType=%s, artists=%s, href=%s, id=%s, images=%s, name=%s, releaseDate=%s, type=%s, uri=%s",
-            albumGroup, albumType, artists, href, id, images, name, releaseDate, type, uri)
+        return "[albumGroup=$albumGroup, albumType=$albumType, artists=$artists, href=$href, id=$id, images=$images, name=$name, releaseDate=$releaseDate, type=$type, uri=$uri]"
     }
 }
 
@@ -46,8 +45,7 @@ class SpotifySongPagination (
         val total: Int
 ) {
     override fun toString(): String {
-        return String.format("[href=%s, items=%s, limit=%s, next=%s, offset=%s, previous=%s, total=%s]",
-                href, items, limit, next, offset, previous, total)
+        return "[href=$href, items=$items, limit=$limit, next=$next, offset=$offset, previous=$previous, total=$total]"
     }
 }
 

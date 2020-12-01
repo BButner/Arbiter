@@ -13,7 +13,6 @@ class HarmonyUserSettings (
         val darkMode: Boolean
 ) {
     override fun toString(): String {
-        return String.format("[id=%s, userId=%s, emailPublic=%s, displayNamePublic=%s, darkMode=%s",
-            id, userId, emailPublic, displayNamePublic, darkMode)
+        return "[id=$id, userId=$userId, emailPublic=$emailPublic, displayNamePublic=$displayNamePublic, darkMode=$darkMode]"
     }
 }

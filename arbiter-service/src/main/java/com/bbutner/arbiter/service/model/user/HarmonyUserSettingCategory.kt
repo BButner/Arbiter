@@ -8,4 +8,8 @@ data class HarmonyUserSettingCategory(
         val settingName: String,
         val description: String,
         val settingCategory: String
-)
+) {
+    override fun toString(): String {
+        return "[id=$id, settingName=$settingName, description=$description, settingCategory=$settingCategory]"
+    }
+}

@@ -16,7 +16,6 @@ data class HarmonyUser(
         val registrationDate: LocalDateTime
 ) {
     override fun toString(): String {
-        return String.format("[id=%s, idExternal=%s, avatarUrl=%s, username=%s, displayName=%s, email=%s, registrationDate=%s]",
-            id, idExternal, avatarUrl, username, displayName, email, registrationDate)
+        return "[id=%s, idExternal=$idExternal, avatarUrl=$avatarUrl, username=$username, displayName=$displayName, email=$email, registrationDate=$registrationDate]"
     }
 }

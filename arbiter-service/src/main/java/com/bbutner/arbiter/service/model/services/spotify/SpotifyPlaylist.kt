@@ -18,8 +18,7 @@ class SpotifyPlaylist(
         val uri: String
 ) {
     override fun toString(): String {
-        return String.format("[collaborative=%s, description=%s, href=%s, id=%s, images=%s, name=%s, owner=%s, public=%s, snapshotId=%s, tracks=%s, type=%s, uri=%s]",
-            collaborative, description, href, id, images, name, owner, public, snapshotId, tracks, type, uri)
+        return "[collaborative=$collaborative, description=$description, href=$href, id=$id, images=$images, name=$name, owner=$owner, public=$public, snapshotId=$snapshotId, tracks=$tracks, type=$type, uri=$uri]"
     }
 }
 
@@ -33,8 +32,7 @@ class SpotifyPlaylistPagination (
         val total: Int
 ) {
     override fun toString(): String {
-        return String.format("[href=%s, items=%s, limit=%s, next=%s, offset=%s, previous=%s, total=%s]",
-            href, items, limit, next, offset, previous, total)
+        return "[href=$href, items=$items, limit=$limit, next=$next, offset=$offset, previous=$previous, total=$total]"
     }
 }
 
@@ -54,7 +52,6 @@ class SpotifyPlaylistFull(
         val uri: String
 ) {
     override fun toString(): String {
-        return String.format("[collaborative=%s, description=%s, href=%s, id=%s, images=%s, name=%s, owner=%s, public=%s, snapshotId=%s, tracks=%s, type=%s, uri=%s]",
-                collaborative, description, href, id, images, name, owner, public, snapshotId, tracks, type, uri)
+        return "[collaborative=$collaborative, description=$description, href=$href, id=$id, images=$images, name=$name, owner=$owner, public=$public, snapshotId=$snapshotId, tracks=$tracks, type=$type, uri=$uri]"
     }
 }

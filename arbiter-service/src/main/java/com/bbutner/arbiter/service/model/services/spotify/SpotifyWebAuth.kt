@@ -14,7 +14,6 @@ class SpotifyAccessTokenResponse(
         val refreshToken: String
 ) {
     override fun toString(): String {
-        return String.format("[accessToken=%s, tokenType=%s, scope=%s, expiresIn=%s, refreshToken=%s]",
-                accessToken, tokenType, scope, expiresIn, refreshToken)
+        return "[accessToken=$accessToken, tokenType=$tokenType, scope=$scope, expiresIn=$expiresIn, refreshToken=$refreshToken]"
     }
 }

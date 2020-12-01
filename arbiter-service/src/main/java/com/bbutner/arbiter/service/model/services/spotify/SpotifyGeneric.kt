@@ -8,8 +8,7 @@ class SpotifyImage(
         val url: String
 ) {
     override fun toString(): String {
-        return String.format("[height=%s, width=%s, url=%s]",
-            height, width, url)
+        return "[height=$height, width=$width, url=$url]"
     }
 }
 
@@ -18,8 +17,7 @@ open class SpotifyGenericHrefTotal(
         val total: Int
 ) {
     override fun toString(): String {
-        return String.format("[href=%s, total=%s]",
-            href, total)
+        return "[href=$href, total=$total]"
     }
 }
 
@@ -38,7 +36,6 @@ class SpotifyUser(
         val uri: String
 ) {
     override fun toString(): String {
-        return String.format("[displayName=%s, followers=%s, href=%s, id=%s, images=%s, type=%s, uri=%s]",
-                displayName, followers, href, id, images, type, uri)
+        return "[displayName=$id, followers=$id, href=$id, id=$id, images=$uri, type=$uri, uri=$uri]"
     }
 }

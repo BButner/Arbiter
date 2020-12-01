@@ -8,9 +8,11 @@ class UnifiedPlaylist(
         // The URI of the Playlist
         val uri: String,
         // The ID of the Playlist
-        val id: String
+        val id: String,
+        // The Image of the Playlist
+        val imageHref: String
 ) {
     override fun toString(): String {
-        return "[name=$name, description=$description, uri=$uri, id=$id]"
+        return "[name=$name, description=$description, uri=$uri, id=$id, imageHref=$imageHref]"
     }
 }

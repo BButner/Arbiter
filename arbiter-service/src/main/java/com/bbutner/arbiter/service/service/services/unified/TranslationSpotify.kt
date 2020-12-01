@@ -15,7 +15,8 @@ class TranslationSpotify() {
                 playlist.name,
                 playlist.description,
                 playlist.uri,
-                playlist.id
+                playlist.id,
+                if (playlist.images.isEmpty()) "" else playlist.images[0].url
         )
     }
 

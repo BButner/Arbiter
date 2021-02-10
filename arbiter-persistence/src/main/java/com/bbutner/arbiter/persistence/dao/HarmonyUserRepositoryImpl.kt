@@ -8,8 +8,8 @@ import com.bbutner.arbiter.service.model.user.HarmonyUserRepository
 
 @Repository
 interface HarmonyUserRepositoryImpl: HarmonyUserRepository, CoroutineCrudRepository<HarmonyUser, String> {
-    @Query("select * from user where id = ?")
-    override suspend fun getById(id: String): HarmonyUser
+    @Query("select * from user where uuid = ?")
+    override suspend fun getByUuid(uuid: String): HarmonyUser
 
     @Query("select * from user where email = ?")
     override suspend fun getByEmail(email: String): HarmonyUser?

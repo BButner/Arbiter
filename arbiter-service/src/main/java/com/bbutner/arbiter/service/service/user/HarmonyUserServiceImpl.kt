@@ -9,15 +9,8 @@ import org.springframework.stereotype.Service
 class HarmonyUserServiceImpl(
         private val harmonyUserRepository: HarmonyUserRepository
 ): HarmonyUserService {
-    override suspend fun getUserById(id: String): HarmonyUser {
-        return when (val user = harmonyUserRepository.getById(id)) {
-            null -> throw NotFoundException()
-            else -> user
-        }
-    }
-
-    override suspend fun getUserByIdExternal(externalId: String): HarmonyUser {
-        return when (val user = harmonyUserRepository.getByIdExternal(externalId)) {
+    override suspend fun getUserByUuid(uuid: String): HarmonyUser {
+        return when (val user = harmonyUserRepository.getByUuid(uuid)) {
             null -> throw NotFoundException()
             else -> user
         }

@@ -5,20 +5,12 @@ import org.springframework.web.server.WebSession
 import java.util.*
 
 class SessionHelper {
-    fun storeUserIdInSession(session: WebSession, userId: Int) {
-        session.attributes.putIfAbsent(SESSION_HARMONY_USER_ID, userId)
+    fun storeUserUuidInSession(session: WebSession, userUuid: UUID) {
+        session.attributes.putIfAbsent(SESSION_HARMONY_USER_UUID, userUuid)
     }
 
-    fun getUserIdFromSession(session: WebSession): Int? {
-        return if (session.attributes[SESSION_HARMONY_USER_ID] == null) null else session.attributes[SESSION_HARMONY_USER_ID] as Int
-    }
-
-    fun storeUserIdExternalInSession(session: WebSession, userIdExternal: String) {
-        session.attributes.putIfAbsent(SESSION_HARMONY_USER_ID_EXTERNAL, userIdExternal)
-    }
-
-    fun getUserIdExternalFromSession(session: WebSession): String? {
-        return if (session.attributes[SESSION_HARMONY_USER_ID_EXTERNAL] == null) null else session.attributes[SESSION_HARMONY_USER_ID_EXTERNAL].toString()
+    fun getUserUuidFromSession(session: WebSession): UUID? {
+        return if (session.attributes[SESSION_HARMONY_USER_UUID] == null) null else UUID.fromString(session.attributes[SESSION_HARMONY_USER_UUID] as String)
     }
 
     fun storeSpotifyAccessTokenInSession(session: WebSession, accessToken: String) {

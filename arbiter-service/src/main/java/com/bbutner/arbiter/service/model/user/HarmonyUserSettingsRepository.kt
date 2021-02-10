@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface HarmonyUserSettingsRepository: CoroutineCrudRepository<HarmonyUserSettings, Int> {
-    suspend fun getByUserId(userId: Int): HarmonyUserSettings
+    suspend fun getByUserId(userId: String): HarmonyUserSettings
 }

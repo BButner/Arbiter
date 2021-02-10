@@ -15,27 +15,26 @@ class RegistrationHelper {
             email: String,
             displayName: String
     ) {
-        println("test")
         val username: String = session.attributes[SESSION_HARMONY_REGISTER_USERNAME] as String
 
         if (userValidForRegistration(harmonyUserRepository, email, username)) {
             val newUser: HarmonyUser = registerUser(harmonyUserRepository, email, displayName, username)
 
-            SessionHelper().storeUserIdInSession(session, newUser.id!!)
+            SessionHelper().storeUserUuidInSession(session, newUser.uuid!!)
         } else {
             // we redirect with an error?
         }
     }
 
-    suspend fun registerUser(harmonyUserRepository: HarmonyUserRepository, email: String, displayName: String, username: String): HarmonyUser {
+    private suspend fun registerUser(harmonyUserRepository: HarmonyUserRepository, email: String, displayName: String, username: String): HarmonyUser {
         return harmonyUserRepository.save(HarmonyUser(
-                null,
-                UUID.randomUUID().toString(),
+                UUID.randomUUID(),
                 DEFAULT_REGISTRATION_IMAGE_NAME,
                 username,
                 displayName,
                 email,
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                insert = true
         ))
     }
 

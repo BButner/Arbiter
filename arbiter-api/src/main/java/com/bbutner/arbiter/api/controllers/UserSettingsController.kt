@@ -14,6 +14,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.reactive.server.awaitSession
 import org.springframework.web.server.ServerWebExchange
+import java.util.*
 
 @CrossOrigin(origins = ["*"],
         allowedHeaders = ["*"],
@@ -27,12 +28,12 @@ class HarmonyUserSettingsController (
         private val harmonyUserSettingCategoryRepository: HarmonyUserSettingCategoryRepository
 ) {
     @GetMapping("/users/{idExternal}/settings")
-    suspend fun getUserSettingsById(@AuthenticationPrincipal user: OAuth2User, @PathVariable idExternal: String, exchange: ServerWebExchange): HarmonyUserSettings {
+    suspend fun getUserSettingsById(@AuthenticationPrincipal user: OAuth2User, @PathVariable idExternal: UUID, exchange: ServerWebExchange): HarmonyUserSettings {
         try {
-            val idExternalFromSession: String? = SessionHelper().getUserIdExternalFromSession(exchange.awaitSession())
+            val idFromSession: UUID? = SessionHelper().getUserUuidFromSession(exchange.awaitSession())
 
-            return if (idExternalFromSession != null && idExternalFromSession == idExternal) {
-                harmonyUserSettingsRepository.getByUserId(SessionHelper().getUserIdFromSession(exchange.awaitSession())!!)
+            return if (idFromSession != null && idFromSession == idExternal) {
+                harmonyUserSettingsRepository.getByUserId(idFromSession.toString())
             } else {
                 throw AuthenticationCredentialsNotFoundException("Not Authenticated")
             }
@@ -44,10 +45,10 @@ class HarmonyUserSettingsController (
     @GetMapping("/users/me/settings")
     suspend fun getUserSettingsImplicit(@AuthenticationPrincipal user: OAuth2User, exchange: ServerWebExchange): HarmonyUserSettings {
         try {
-            val idExternalFromSession: String? = SessionHelper().getUserIdExternalFromSession(exchange.awaitSession())
+            val idFromSession: UUID? = SessionHelper().getUserUuidFromSession(exchange.awaitSession())
 
-            return if (idExternalFromSession != null) {
-                harmonyUserSettingsRepository.getByUserId(SessionHelper().getUserIdFromSession(exchange.awaitSession())!!)
+            return if (idFromSession != null) {
+                harmonyUserSettingsRepository.getByUserId(idFromSession.toString())
             } else {
                 throw AuthenticationCredentialsNotFoundException("Not Authenticated")
             }
@@ -67,7 +68,7 @@ class HarmonyUserSettingsController (
 
     @PutMapping("/users/{idExternal}/settings")
     suspend fun updateUserSettingsByIdExternal(@AuthenticationPrincipal user: OAuth2User, @PathVariable idExternal: String, @RequestBody settings: HarmonyUserSettings, exchange: ServerWebExchange) {
-        val settingsCurrent: HarmonyUserSettings = harmonyUserSettingsRepository.getByUserId(SessionHelper().getUserIdFromSession(exchange.awaitSession())!!)
+        val settingsCurrent: HarmonyUserSettings = harmonyUserSettingsRepository.getByUserId(SessionHelper().getUserUuidFromSession(exchange.awaitSession()).toString()!!)
 
         if (settingsCurrent.id == settings.id && settingsCurrent.userId == settings.userId) {
             println(settings)

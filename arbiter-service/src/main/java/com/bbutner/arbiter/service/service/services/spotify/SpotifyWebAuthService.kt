@@ -36,8 +36,6 @@ class SpotifyWebAuthService() {
                 .retrieve()
                 .awaitBody<SpotifyAccessTokenResponse>()
 
-        println(resp)
-
         return resp
     }
 
@@ -48,8 +46,6 @@ class SpotifyWebAuthService() {
                 .header("Authorization", "Bearer $accessToken")
                 .retrieve()
                 .awaitBody<SpotifyUser>()
-
-        println(resp)
 
         return resp
     }

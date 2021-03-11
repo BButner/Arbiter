@@ -20,7 +20,6 @@ class LoginHelper {
     }
 
     suspend fun userRegisteredWithEmail(harmonyUserRepository: HarmonyUserRepository, email: String): Boolean {
-        println("here?")
         return harmonyUserRepository.getByEmail(email) != null
     }
 }

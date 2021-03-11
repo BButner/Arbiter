@@ -42,6 +42,7 @@ class GlobalErrorHandler(
         println(errorResponse)
         println(statusCode)
         println(ex)
+        ex.printStackTrace()
 
         val response = exchange.response
         check(response.setStatusCode(statusCode)) { "HTTP response is committed" }

@@ -31,7 +31,7 @@ class SpotifyUser(
         val followers: SpotifyFollower?,
         val href: String,
         val id: String,
-        val images: List<SpotifyImage> = emptyList(),
+        val images: Array<SpotifyImage>?,
         val type: String,
         val uri: String
 ) {

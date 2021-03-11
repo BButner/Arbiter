@@ -1,6 +1,8 @@
 package com.bbutner.arbiter.service.model.services.spotify
 
+import com.bbutner.arbiter.service.service.services.spotify.SpotifyPlaylistDeserializer
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 
 class SpotifyPlaylist(
         val collaborative: Boolean,
@@ -36,6 +38,7 @@ class SpotifyPlaylistPagination (
     }
 }
 
+@JsonDeserialize(using = SpotifyPlaylistDeserializer::class)
 class SpotifyPlaylistFull(
         val collaborative: Boolean,
         val description: String?,

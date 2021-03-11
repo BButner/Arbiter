@@ -27,7 +27,7 @@ data class HarmonyUser(
         displayName: String?,
         email: String?,
         registrationDate: LocalDateTime
-    ) : this (uuid, avatarUrl, username, displayName, email, registrationDate, false)
+    ) : this(uuid, avatarUrl, username, displayName, email, registrationDate, false)
 
     override fun toString(): String {
         return "[uuid=$uuid, avatarUrl=$avatarUrl, username=$username, displayName=$displayName, email=$email, registrationDate=$registrationDate]"

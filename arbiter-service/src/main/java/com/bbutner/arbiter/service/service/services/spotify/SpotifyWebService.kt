@@ -19,8 +19,6 @@ class SpotifyWebService {
                 .retrieve()
                 .awaitBody<SpotifyPlaylistPagination>()
 
-        println(resp)
-
         return resp.items.map { TranslationSpotify().translatePlaylistToUnified(it) }.toTypedArray()
     }
 
@@ -28,12 +26,12 @@ class SpotifyWebService {
         val playlist: SpotifyPlaylistFull = getPlaylistById(accessToken, playlistId)
         val songs: ArrayList<SpotifySong> = arrayListOf()
         var next: String? = playlist.tracks.next
-        songs.addAll(playlist.tracks.items.map { songWrapper -> songWrapper.track })
+        songs.addAll(playlist.tracks.items.filter { item -> !item.isLocal }.map { songWrapper -> songWrapper.track } )
 
         if (next != null) {
             do {
                 val moreSongs: SpotifySongPagination = fetchMoreSongs(accessToken, next!!)
-                songs.addAll(moreSongs.items.map { spotifySongWrapper -> spotifySongWrapper.track })
+                songs.addAll(moreSongs.items.filter { item -> !item.isLocal }.map { spotifySongWrapper -> spotifySongWrapper.track })
                 next = moreSongs.next
             } while (next != null)
         }
@@ -53,8 +51,6 @@ class SpotifyWebService {
                 .header("Authorization", "Bearer $accessToken")
                 .retrieve()
                 .awaitBody<SpotifyPlaylistFull>()
-
-        println(result)
 
         return result
     }

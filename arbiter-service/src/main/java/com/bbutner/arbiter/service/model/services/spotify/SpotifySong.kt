@@ -52,6 +52,8 @@ class SpotifySongPagination (
 class SpotifySongWrapper(
         @JsonProperty("added_at")
         val addedAt: String,
+        @JsonProperty("is_local")
+        val isLocal: Boolean,
         val track: SpotifySong
 ) {
     override fun toString(): String {
